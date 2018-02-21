@@ -30,10 +30,9 @@ PASSWORD=${PASSWORD:-'pass'}
 IMAGE=${IMAGE:-'alpine:3.7'}
 
 # execution settings
-ENTRY_MESSAGE=$ENTRY_MESSAGE
 TIMEOUT_MESSAGE=${TIMEOUT_MESSAGE:-'connection timed out'}
 TIMEOUT=$TIMEOUT
-COMMAND="ENTRY_MESSAGE=$ENTRY_MESSAGE TIMEOUT=$TIMEOUT TIMEOUT_MESSAGE='$TIMEOUT_MESSAGE' /user-entrypoint.sh -it --rm $PID_LIMIT $IMAGE"
+COMMAND="TIMEOUT=$TIMEOUT TIMEOUT_MESSAGE='$TIMEOUT_MESSAGE' /user-entrypoint.sh -it --rm $PID_LIMIT $IMAGE"
 echo "command entrypoint is '$COMMAND'"
 
 # add user
@@ -44,6 +43,8 @@ adduser -D \
     -s /bin/sh \
     ${USERNAME}
 echo "${USERNAME}:${PASSWORD}" | chpasswd
+echo "writing entry message"
+echo "$ENTRY_MESSAGE" >> "/home/${USERNAME}/message"
 
 # make `docker run` the default command for that user 
 echo "configuring sshd"
