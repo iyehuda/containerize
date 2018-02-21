@@ -4,7 +4,7 @@ set -e
 
 get_forkbomb_protection() {
     # Amazon linux does not support pids limit
-    [ -n "uname -r | grep amzn" ] && echo '--kernel-memory=4m' || echo '--pids-limit=10'
+    [ -n "uname -r | grep amzn" ] && echo '--kernel-memory=40m' || echo '--pids-limit=10'
 }
 
 wait_docker() {
