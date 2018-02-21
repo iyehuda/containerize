@@ -35,7 +35,8 @@ The following variable are supported:
 * USERNAME - SSH user to log in (defaults to 'user')
 * PASSWORD - SSH password (defaults to 'pass')
 * IMAGE - docker image to run to each login (default to 'alpine:3.7'). Another docker run flags can be given within this variable (e.g., --entryoint)
-* TIMEOUT - number of seconds to wait until shutting down the connection (optional).
+* ENTRY_MESSAGE - The message to be displayed on user entrace
+* TIMEOUT - number of seconds to wait until shutting down the connection (optional)
 * TIMEOUT_MESSAGE - message to print before shutting down connection (default to 'connection timed out')
 * LOGIN_URL - URL of image registry (defaults to 'docker.io')
 * LOGIN_USERNAME - username for registry login
